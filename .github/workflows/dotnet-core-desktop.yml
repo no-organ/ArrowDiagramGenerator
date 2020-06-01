@@ -73,7 +73,7 @@ jobs:
       with:
         dotnet-version: 3.1.101
 
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild .github/workflows/dotnet-core-desktop.yml
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@2008f912f56e61277eefaac6d1888b750582aa16
 
@@ -96,7 +96,7 @@ jobs:
 
     # Create the app package by building and packaging the Windows Application Packaging project
     - name: Create the app package
-      run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
+      run: msbuild $env:ArrowDiagramGenerator.sln /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
       env:
         Appx_Bundle: Always
         Appx_Bundle_Platforms: x86|x64
